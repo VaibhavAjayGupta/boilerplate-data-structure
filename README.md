@@ -1,9 +1,28 @@
-# boilerplate-data-structure
-Boilerplate code for some basic datastructures
+<html>
+<body>
+<p style="text-align: center;">
+	<br>
+</p>
 
-Milestones Completed :- 
-Heap datastructure added in java.
+<p><strong>Boilerplate code for some basic datastructures in Java, Javascript &amp; Python.</strong></p>
 
-To do :-
-Add Javascript code for heap.
-Add Python code for heap.
+<p>
+	<br>
+</p>
+
+<p><strong>Completed :-</strong></p>
+
+<ul>
+	<li data-empty="true">Heap datastructure completed in java.</li>
+</ul>
+
+<p><strong>To do :-</strong></p>
+
+<ul>
+	<li>Add Javascript code for heap.</li>
+	<li>Add Python code for heap.</li>
+</ul>
+
+
+</body>
+</html>
