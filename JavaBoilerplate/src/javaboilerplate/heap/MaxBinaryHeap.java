@@ -114,6 +114,19 @@ public class MaxBinaryHeap {
         deleteKey_max_heap(key);
     }
     
+    //function to change a value of particular key
+    public void changeValue_max_heap(int key,int value){ // Swap the value of key with the last value of tree and delete the last value
+        
+        int tempValue = this.heapTree.get(key);
+        this.heapTree.set(key,value);
+        if(tempValue<value){
+            this.heapTree=max_heapify_up(this.heapTree,key);
+        }
+        else {
+            this.heapTree=max_heapify_down(this.heapTree,key);
+        }
+    }
+    
     
     //function to find a key of particular value
     public int findKey_max_heap(int key,int value){ // Swap the value of key with the last value of tree and delete the last value

@@ -29,13 +29,15 @@ public class JavaBoilerplate {
         System.out.println(heapTree); // 16 14 10 8 1 7 3 2 4
         System.out.println(heapTree.extractMax_maxHeap()); // 16
         System.out.println(heapTree); // 14 8 10 4 1 7 3 2 
+        heapTree.changeValue_max_heap(4,20);
+        System.out.println(heapTree); //20 14 10 8 1 7 3 2
         
         // New Heap created for sorted 
         ArrayList<Integer> clonedList =  (ArrayList<Integer>) heapTree.getHeapTree().clone();
         clonedList.remove(0); // remove the first element of zero
         MaxBinaryHeap clonedHeapTree = new MaxBinaryHeap(clonedList);
         ArrayList<Integer> sortedList = clonedHeapTree.get_sortedMaxHeap();
-        showList(sortedList); // 14 10 8 7 4 3 2 1
+        showList(sortedList); // 20 14 10 8 7 3 2 1
         
     }
     
