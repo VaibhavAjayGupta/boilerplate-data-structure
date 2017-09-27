@@ -61,8 +61,9 @@ public class MaxHeap {
                 if(leftChild>arrList.get(position)){
                         temp = arrList.get(position);
                         arrList.set(position, leftChild);
-                        arrList.set(leftChild, temp);
                         newPosition = 2*position;
+                        arrList.set(newPosition, temp);
+                        
                     }
             }
   
@@ -153,6 +154,16 @@ public class MaxHeap {
     }
     
     //function to return a sorted array  desending order
+    public ArrayList<Integer> get_sortedMaxHeap(){
+        ArrayList<Integer> sortedList= new ArrayList<>();
+        
+        int sortedListLength = this.heapSize;
+        for(int i=0;i<sortedListLength;i++)
+        {
+            sortedList.add(extractMax_maxHeap());
+        }
+        return sortedList;
+    }
     
     //function to build max heap
     private void build_max_heap()
@@ -172,4 +183,5 @@ public class MaxHeap {
         }
         return value;
     }
+    
 }

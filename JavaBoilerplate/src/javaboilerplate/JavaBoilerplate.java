@@ -38,6 +38,18 @@ public class JavaBoilerplate {
         
         System.out.println(heapTree); // 14 8 10 4 1 7 3 2 
         
+        ArrayList<Integer> sortedList = heapTree.get_sortedMaxHeap();
+        
+        showList(sortedList); // 14 10 8 7 4 3 2 1
+        
     }
     
+    static public void showList(ArrayList<Integer> arrList)
+    {
+        String str = "";
+        for(int i=0;i<arrList.size();i++){
+            str +=arrList.get(i)+ " ";
+        }
+        System.out.println(str);
+    }
 }
