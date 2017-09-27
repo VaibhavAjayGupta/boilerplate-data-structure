@@ -9,6 +9,6 @@ package javaboilerplate.heap;
  *
  * @author vaibhav
  */
-public class Heap {
+public class MaxHeap {
     
 }
