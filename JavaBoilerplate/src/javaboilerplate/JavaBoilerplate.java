@@ -21,25 +21,20 @@ public class JavaBoilerplate {
         MaxHeap heapTree= new MaxHeap(unsortedArray); // Will create a heapTree from an unsotred array
         
         System.out.println(heapTree); // 16 14 10 8 7 9 3 2 4 1
-        
         heapTree.insert_max_heap(20); 
-        
         System.out.println(heapTree); // 20 16 10 8 14 9 3 2 4 1 7
-        
         heapTree.deleteKey_max_heap(6);
-        
         System.out.println(heapTree); // 20 16 10 8 14 7 3 2 4 1 
-        
         heapTree.deleteValue_max_heap(20);
-        
         System.out.println(heapTree); // 16 14 10 8 1 7 3 2 4
-        
         System.out.println(heapTree.extractMax_maxHeap()); // 16
-        
         System.out.println(heapTree); // 14 8 10 4 1 7 3 2 
         
-        ArrayList<Integer> sortedList = heapTree.get_sortedMaxHeap();
-        
+        // New Heap created for sorted 
+        ArrayList<Integer> clonedList =  (ArrayList<Integer>) heapTree.getHeapTree().clone();
+        clonedList.remove(0); // remove the first element of zero
+        MaxHeap clonedHeapTree = new MaxHeap(clonedList);
+        ArrayList<Integer> sortedList = clonedHeapTree.get_sortedMaxHeap();
         showList(sortedList); // 14 10 8 7 4 3 2 1
         
     }

@@ -29,6 +29,10 @@ public class MaxHeap {
         return this.heapSize;
     }
     
+    public void removeLastElement(){
+        this.heapTree.remove(this.heapTree.size()-1);
+        this.heapSize-=1;
+    }
     // function to correct a single voilation of max-heap property i.e parent is smaller than either of it's children while moving down
     ArrayList<Integer> max_heapify_down(ArrayList<Integer> arrList,int position){ // position where the max-heap property is supposed to be voilated
         int newPosition=position,temp;
