@@ -18,7 +18,7 @@ public class JavaBoilerplate {
         
         Collections.addAll(unsortedArray,16,4,10,14,7,9,3,2,8,1);
         
-        MaxHeap heapTree= new MaxHeap(unsortedArray); // Will create a heapTree of unsotred array
+        MaxHeap heapTree= new MaxHeap(unsortedArray); // Will create a heapTree from an unsotred array
         
         System.out.println(heapTree); // 16 14 10 8 7 9 3 2 4 1
         
