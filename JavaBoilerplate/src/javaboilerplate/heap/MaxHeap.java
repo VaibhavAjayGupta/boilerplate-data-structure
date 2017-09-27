@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaboilerplate.heap;
 
 import java.util.ArrayList;
@@ -10,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author vaibhav
+ *@author Vaibhav Ajay Gupta
  */
 public class MaxHeap {
     
@@ -25,6 +20,7 @@ public class MaxHeap {
         
     }
     
+    @SuppressWarnings("ReturnOfCollectionOrArrayField")
     public ArrayList<Integer> getHeapTree (){
         return this.heapTree;
     }
@@ -73,20 +69,87 @@ public class MaxHeap {
         }
         
         if(newPosition!=position){
-            max_heapify_down(arrList,newPosition);
+            arrList=max_heapify_down(arrList,newPosition);
         }
         
         return arrList;
     }
     
-    //function to insert a new value
-    void insert_max_heap(){
+    //function to coorect one voilation of max heap property moving from particular index towards the root
+    ArrayList<Integer> max_heapify_up(ArrayList<Integer> arrList,int position){
         
+        if(position>1&&arrList.get(position)>arrList.get(position/2)) //if child is greater than parent
+        {
+            int temp = arrList.get(position); 
+            arrList.set(position, arrList.get(position/2));
+            arrList.set(position/2, temp);
+            arrList=max_heapify_up(arrList,position/2);
+        }
+        
+        
+        return arrList;
     }
     
-    //function to extract max value
-    void extract_max(){
+    //function to insert a new value
+    public void insert_max_heap(int value){
+        this.heapTree.add(value);
+        this.heapSize+=1;
+        this.heapTree=max_heapify_up(this.heapTree,this.heapSize);
+    }
+    
+    //function to delete a particular position
+    public void deleteKey_max_heap(int key){ // Swap the value of key with the last value of tree and delete the last value
         
+        this.heapTree.set(key, this.heapTree.get(this.heapSize)); // Replaced the key with last value
+        this.heapTree.remove(this.heapSize);
+        this.heapSize-=1;
+        this.heapTree=max_heapify_down(this.heapTree,key);
+    }
+    
+    //function to delete a particular value
+    public void deleteValue_max_heap(int value){ // Swap the value of key with the last value of tree and delete the last value
+        
+        int key = findKey_max_heap(1,value); // find the key of value
+        deleteKey_max_heap(key);
+    }
+    
+    
+    //function to find a key of particular value
+    public int findKey_max_heap(int key,int value){ // Swap the value of key with the last value of tree and delete the last value
+        
+        if(value>this.heapTree.get(key))
+            return -1;
+        else if(value==this.heapTree.get(key))
+            return key;
+        else
+        {
+            int tempKey = findKey_max_heap(2*key,value); // check in left subtree
+            if(tempKey>0)
+            {
+                key = tempKey;
+            }
+            else
+            {
+                key = findKey_max_heap(2*key+1,value); // check in right subTree
+            }
+        }
+        
+        return key;
+    }
+    
+    
+    //function to extract max value
+    public int extractMax_maxHeap(){
+           int max = this.heapTree.get(1);
+           deleteKey_max_heap(1);
+           return max;
+           
+    }
+    
+    //function to return max value
+    public int getMax_maxHeap(){
+        int max = this.heapTree.get(1);
+        return max;
     }
     
     //function to return a sorted array  desending order

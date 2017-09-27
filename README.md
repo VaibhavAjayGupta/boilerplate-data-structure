@@ -16,7 +16,7 @@
 	<li data-empty="true">Heap datastructure completed in java.</li>
 </ul>
 
-<p><strong>To do :-</strong></p>
+<p><strong>To do's :-</strong></p>
 
 <ul>
 	<li>Add Javascript code for heap.</li>

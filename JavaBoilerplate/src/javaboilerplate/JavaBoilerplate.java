@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaboilerplate;
 
 import java.util.ArrayList;
@@ -11,7 +6,7 @@ import javaboilerplate.heap.MaxHeap;
 
 /**
  *
- * @author vaibhav
+ * @author Vaibhav Ajay Gupta
  */
 public class JavaBoilerplate {
 
@@ -23,9 +18,25 @@ public class JavaBoilerplate {
         
         Collections.addAll(unsortedArray,16,4,10,14,7,9,3,2,8,1);
         
-        MaxHeap heapTree= new MaxHeap(unsortedArray); // Will return a heapTree of unsotred array
+        MaxHeap heapTree= new MaxHeap(unsortedArray); // Will create a heapTree of unsotred array
         
-        System.out.println(heapTree);
+        System.out.println(heapTree); // 16 14 10 8 7 9 3 2 4 1
+        
+        heapTree.insert_max_heap(20); 
+        
+        System.out.println(heapTree); // 20 16 10 8 14 9 3 2 4 1 7
+        
+        heapTree.deleteKey_max_heap(6);
+        
+        System.out.println(heapTree); // 20 16 10 8 14 7 3 2 4 1 
+        
+        heapTree.deleteValue_max_heap(20);
+        
+        System.out.println(heapTree); // 16 14 10 8 1 7 3 2 4
+        
+        System.out.println(heapTree.extractMax_maxHeap()); // 16
+        
+        System.out.println(heapTree); // 14 8 10 4 1 7 3 2 
         
     }
     
