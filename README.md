@@ -13,7 +13,7 @@
 <p><strong>Completed :-</strong></p>
 
 <ul>
-	<li data-empty="true">Heap datastructure completed in java.</li>
+	<li data-empty="true">Binary Heap datastructure completed in java.</li>
 </ul>
 
 <p><strong>To do's :-</strong></p>
