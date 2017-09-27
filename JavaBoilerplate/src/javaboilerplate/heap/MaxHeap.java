@@ -6,7 +6,7 @@
 package javaboilerplate.heap;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 
 /**
  *
@@ -84,7 +84,7 @@ public class MaxHeap {
         
     }
     
-    //function to extrat max value
+    //function to extract max value
     void extract_max(){
         
     }
@@ -102,7 +102,7 @@ public class MaxHeap {
     
     
     @Override
-    public String toString(){ // Ot display the array
+    public String toString(){ // to display the heapTree visualized as an array
         String value = "";
         for(int i=1;i<this.heapSize+1;i++){
             value +=heapTree.get(i)+ " ";
