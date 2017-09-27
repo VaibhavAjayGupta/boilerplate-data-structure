@@ -7,12 +7,12 @@ import java.util.ArrayList;
  *
  *@author Vaibhav Ajay Gupta
  */
-public class MaxHeap {
+public class MaxBinaryHeap {
     
     private ArrayList<Integer> heapTree = new ArrayList(); // Max Heapified Array visualized as a tree.
     private int heapSize; // HeapSize 
     
-    public MaxHeap(ArrayList<Integer> unsortedArray){
+    public MaxBinaryHeap(ArrayList<Integer> unsortedArray){
         heapTree.add(0);
         heapTree.addAll(unsortedArray);
         heapSize = unsortedArray.size();

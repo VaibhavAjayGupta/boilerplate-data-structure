@@ -4,6 +4,6 @@ package javaboilerplate.heap;
  *
  * @author Vaibhav Ajay Gupta
  */
-public class MinHeap {
+public class MinBinaryHeap {
     
 }

@@ -2,7 +2,7 @@ package javaboilerplate;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import javaboilerplate.heap.MaxHeap;
+import javaboilerplate.heap.MaxBinaryHeap;
 
 /**
  *
@@ -18,7 +18,7 @@ public class JavaBoilerplate {
         
         Collections.addAll(unsortedArray,16,4,10,14,7,9,3,2,8,1);
         
-        MaxHeap heapTree= new MaxHeap(unsortedArray); // Will create a heapTree from an unsotred array
+        MaxBinaryHeap heapTree= new MaxBinaryHeap(unsortedArray); // Will create a heapTree from an unsotred array
         
         System.out.println(heapTree); // 16 14 10 8 7 9 3 2 4 1
         heapTree.insert_max_heap(20); 
@@ -33,7 +33,7 @@ public class JavaBoilerplate {
         // New Heap created for sorted 
         ArrayList<Integer> clonedList =  (ArrayList<Integer>) heapTree.getHeapTree().clone();
         clonedList.remove(0); // remove the first element of zero
-        MaxHeap clonedHeapTree = new MaxHeap(clonedList);
+        MaxBinaryHeap clonedHeapTree = new MaxBinaryHeap(clonedList);
         ArrayList<Integer> sortedList = clonedHeapTree.get_sortedMaxHeap();
         showList(sortedList); // 14 10 8 7 4 3 2 1
         
