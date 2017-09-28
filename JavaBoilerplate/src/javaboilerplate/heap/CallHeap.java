@@ -13,7 +13,7 @@ import java.util.Collections;
  * @author Vaibhav Ajay Gupta
  */
 public class CallHeap {
-      public static void main(String[] args) {
+      public void main() {
         ArrayList<Integer> unsortedArray = new ArrayList();        
         
         Collections.addAll(unsortedArray,16,4,10,14,7,9,3,2,8,1);
