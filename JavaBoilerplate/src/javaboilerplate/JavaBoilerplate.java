@@ -1,6 +1,6 @@
 package javaboilerplate;
 
-import javaboilerplate.stack.CallStack;
+import javaboilerplate.queue.CallQueue;
 
 /**
  *
@@ -16,8 +16,11 @@ public class JavaBoilerplate {
 //        CallHeap createHeap = new CallHeap();
 //        createHeap.main();
 
-          CallStack createStack = new CallStack();
-          createStack.main();
+//          CallStack createStack = new CallStack();
+//          createStack.main();
+
+            CallQueue createQueue = new CallQueue();
+            createQueue.main();
         
     }
     
