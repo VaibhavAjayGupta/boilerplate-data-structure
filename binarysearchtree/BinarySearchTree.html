@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Binary Search Tree</title>
+    </head>
+    <body>
+        <h2>Binary Search Tree</h2>
+        Enter numbers to create a Binary Search Tree : <input type="text" id="inputArray"> Ex - 9,3,4,5,6<br/> <br/>
+        <input type="button" onclick="createBST()" value="Create BST"><br/><br/>
+        Inorder traversal of BST  : <span id="onorderTraverse"></span><br/><br/><br/><br/>
+        Enter numbers to insert: <input type="text" id="insertNumber"> Ex - 12,14,50<br/><br/>
+        Inorder traversal of updated BST: <span id="insertedBST"></span><br/><br/>
+        <input type="button" onclick="insertNumberUI()" value="Insert"><br/><br/><br/><br/>
+        Enter numbers to delete: <input type="text" id="deleteValue"> Ex - 12<br/><br/>
+        Inorder traversal of updated BST: <span id="afterDelete"></span><br/><br/>
+        <input type="button" onclick="deleteValueUI()" value="Delete"><br/><br/><br/><br/>
+        Enter number to find inorder successor and predecessor : <input type="text" id="findInsucPre"> Ex - 12<br/><br/>
+        Inorder Successor : <span id="afterInsuc"></span><br/><br/>
+        Inorder Predecessor : <span id="afterInPre"></span><br/><br/>
+        <input type="button" onclick="findInsucPreUI()" value="Find"><br/><br/>
+        Minimum value of updated BST : <span id="minValue"></span><br/><br/>
+        <input type="button" onclick="findMinUI()" value="Find Min"><br/><br/>
+        Maximum value of updated BST : <span id="maxValue"></span><br/><br/>
+        <input type="button" onclick="findMaxUI()" value="Find Max"><br/><br/>
+        Sorted Array of updated BST : <span id="sortedArray"></span><br/><br/>
+        <input type="button" onclick="sort()" value="Sort">
+        <script src="binarysearchtree.js"></script>
+    </body>
+</html>
