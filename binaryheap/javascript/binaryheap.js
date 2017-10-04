@@ -3,11 +3,10 @@ var inputArray;
 function createHeap() { // Parent is (i)th element, (2i)th is left child & (2i+1)th is right child
     inputArray = document.getElementById("arrayInput").value.split(",");
     inputArray.unshift(0); // shift all the elements by 1
-    for (let i = 1; i < inputArray.length; i++) {
-        inputArray[i] = parseInt(inputArray[i]);
-    }
+    inputArray = inputArray.map(function(x){
+        return parseInt(x);
+    });
     buildMinHeap(inputArray);
-    console.log(inputArray);
 }
 
 // define build min heap here
