@@ -63,13 +63,12 @@ function calculateHeavy(node) {
 
     let diff = rh - lh; // Difference in height
     let heavy;
-    if(diff>=-1&&diff<=1){
+    if (diff >= -1 && diff <= 1) {
         heavy = "neutral";
-    }else if(rh > lh)
-    {
+    } else if (rh > lh) {
         heavy = "right";
     }
-    else{
+    else {
         heavy = "left";
     }
     return heavy;
@@ -92,15 +91,13 @@ function calculateHeavySmall(node) {
         rh = node.right.height;
     }
 
-    let diff = rh - lh; // Difference in height
     let heavy;
-    if(rh==lh){
+    if (rh == lh) {
         heavy = "neutral";
-    }else if(rh > lh)
-    {
+    } else if (rh > lh) {
         heavy = "right";
     }
-    else{
+    else {
         heavy = "left";
     }
     return heavy;
@@ -109,8 +106,8 @@ function calculateHeavySmall(node) {
 //  function to check heavy
 function checkHeavy(node) {
     let heavy = calculateHeavy(node);
-    if (heavy==="left") { // left heavy
-        if (calculateHeavySmall(node.left)==="right") // zigzag
+    if (heavy === "left") { // left heavy
+        if (calculateHeavySmall(node.left) === "right") // zigzag
         {
             node.left = leftRotate(node.left);
             node = rightRotate(node);
@@ -120,8 +117,8 @@ function checkHeavy(node) {
             node = rightRotate(node);
         }
     }
-    else if(heavy==="right"){ // right heavy
-        if (calculateHeavySmall(node.right)==="left") // i.e zigzag
+    else if (heavy === "right") { // right heavy
+        if (calculateHeavySmall(node.right) === "left") // i.e zigzag
         {
             node.right = rightRotate(node.right);
             node = leftRotate(node);
@@ -131,9 +128,9 @@ function checkHeavy(node) {
             node = leftRotate(node);
         }
     }
-    else{
-        node.height=findHeight(node);
-    }   
+    else {
+        node.height = findHeight(node);
+    }
     return node;
 }
 
