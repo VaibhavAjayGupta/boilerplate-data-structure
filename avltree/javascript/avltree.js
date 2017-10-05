@@ -6,7 +6,7 @@ function Node(data) {
     this.data = data;
     this.left = null;
     this.right = null;
-    this.heavy = 0;
+    this.height = 0;
 }
 
 // function to insert a value in aAVL balanced binary search tree
@@ -22,9 +22,8 @@ function insertValue(node, data) {
             node.right = insertValue(node.right, data);
         }
         node = checkHeavy(node);
-        
     }
-    
+
     return node;
 }
 
@@ -42,62 +41,103 @@ function createAVL() {
     }
 
     document.getElementById("onorderTraverse").innerText = inorderTraversal(root, []);
+    document.getElementById("preOrderTraverse").innerText = preOrderTraversal(root, []);
 }
 
-// function to calculate whether node is right heavy (+1),left heavy(-1), neutral(0)
+// function to calculate whether node is right heavy (+2),left heavy(-2), neutral(1,0,-1)
 function calculateHeavy(node) {
     let rh, lh; // heights of left and right tree
     if (node.left === undefined || node.left === null) {
         lh = -1;
     }
     else {
-        lh = node.left.heavy;
+        lh = node.left.height;
     }
 
     if (node.right == undefined || node.right == null) {
         rh = -1;
     }
     else {
-        rh = node.right.heavy;
+        rh = node.right.height;
     }
 
-    return rh - lh;
+    let diff = rh - lh; // Difference in height
+    let heavy;
+    if(diff>=-1&&diff<=1){
+        heavy = "neutral";
+    }else if(rh > lh)
+    {
+        heavy = "right";
+    }
+    else{
+        heavy = "left";
+    }
+    return heavy;
+}
 
+// function to calculate whether node is right heavy (+1),left heavy(-1), neutral(0)
+function calculateHeavySmall(node) {
+    let rh, lh; // heights of left and right tree
+    if (node.left === undefined || node.left === null) {
+        lh = -1;
+    }
+    else {
+        lh = node.left.height;
+    }
+
+    if (node.right == undefined || node.right == null) {
+        rh = -1;
+    }
+    else {
+        rh = node.right.height;
+    }
+
+    let diff = rh - lh; // Difference in height
+    let heavy;
+    if(rh==lh){
+        heavy = "neutral";
+    }else if(rh > lh)
+    {
+        heavy = "right";
+    }
+    else{
+        heavy = "left";
+    }
+    return heavy;
 }
 
 //  function to check heavy
 function checkHeavy(node) {
     let heavy = calculateHeavy(node);
-    if (-1 <= heavy && heavy <= 1) {
-        node.heavy = heavy;
-    }
-    else {
-        if (heavy < 0)// left heavy
+    if (heavy==="left") { // left heavy
+        if (calculateHeavySmall(node.left)==="right") // zigzag
         {
-            if (node.left.heavy < 0) //ie. node is double left heavy in straight line
-            {
-                node = rightRotate(node);
-            }
-            else // i.e zigzag
-            {
-                node.left = leftRotate(node.left);
-                node = rightRotate(node);
-            }
+            node.left = leftRotate(node.left);
+            node = rightRotate(node);
         }
-        else {// right heavy
-
-            if (node.right.heavy > 0) // i.e node is double right heavy in straight line
-            {
-                node = leftRotate(node);
-            }
-            else { // i.e zigzag
-                node.right = rightRotate(node.right);
-                node = leftRotate(node);
-            }
+        else // ie. node is double left heavy in straight line
+        {
+            node = rightRotate(node);
         }
     }
+    else if(heavy==="right"){ // right heavy
+        if (calculateHeavySmall(node.right)==="left") // i.e zigzag
+        {
+            node.right = rightRotate(node.right);
+            node = leftRotate(node);
+
+        }
+        else { // i.e node is double right heavy in straight line
+            node = leftRotate(node);
+        }
+    }
+    else{
+        node.height=findHeight(node);
+    }   
     return node;
 }
+
+
 
 // function for left rotate
 function leftRotate(node) {
@@ -106,11 +146,10 @@ function leftRotate(node) {
     node.right = node.right.left;
     tempNode.left = node;
 
-    if(tempNode.left!=undefined||tempNode.left!=null)
-    tempNode.left.heavy=calculateHeavy(tempNode.left);
-    if(tempNode.right!=undefined||tempNode.right!=null)
-    tempNode.right.heavy=calculateHeavy(tempNode.right);
-    tempNode.heavy=calculateHeavy(tempNode.heavy);
+    if (tempNode.left != undefined || tempNode.left != null)
+        tempNode.left.height = findHeight(tempNode.left);
+
+    tempNode.height = findHeight(tempNode);
     return tempNode;
 }
 
@@ -121,12 +160,33 @@ function rightRotate(node) {
     node.left = node.left.right;
     tempNode.right = node;
 
-    if(tempNode.left!=undefined||tempNode.left!=null)
-    tempNode.left.heavy=calculateHeavy(tempNode.left);
-    if(tempNode.right!=undefined||tempNode.right!=null)
-    tempNode.right.heavy=calculateHeavy(tempNode.right);
-    tempNode.heavy=calculateHeavy(tempNode.heavy);
+    if (tempNode.right != undefined || tempNode.right != null)
+        tempNode.right.height = findHeight(tempNode.right);
+
+    tempNode.height = findHeight(tempNode);
     return tempNode;
+}
+
+// function to find height of node
+function findHeight(node) {
+
+    let rh, lh; // heights of left and right tree
+    if (node.left === undefined || node.left === null) {
+        lh = -1;
+    }
+    else {
+        lh = node.left.height;
+    }
+
+    if (node.right === undefined || node.right === null) {
+        rh = -1;
+    }
+    else {
+        rh = node.right.height;
+    }
+
+    return Math.max(lh, rh) + 1;
+
 }
 
 //function for inorder traversal of tree
@@ -135,6 +195,16 @@ function inorderTraversal(node, traversedArray) {
         traversedArray = inorderTraversal(node.left, traversedArray);
         traversedArray.push(node.data);
         traversedArray = inorderTraversal(node.right, traversedArray);
+    }
+    return traversedArray;
+}
+
+//function for preorder traversal of tree
+function preOrderTraversal(node, traversedArray) {
+    if (node != null) {
+        traversedArray.push(node.data);
+        traversedArray = preOrderTraversal(node.left, traversedArray);
+        traversedArray = preOrderTraversal(node.right, traversedArray);
     }
     return traversedArray;
 }
@@ -149,6 +219,7 @@ function insertNumberUI() {
     }
 
     document.getElementById("insertedBST").innerText = inorderTraversal(root, []);
+    document.getElementById("insertpreOrderTraverse").innerText = preOrderTraversal(root, []);
 }
 
 // function to sort in asecending order
