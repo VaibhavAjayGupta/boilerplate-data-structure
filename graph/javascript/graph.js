@@ -14,6 +14,7 @@ function Graph(numVertices) {
 function createGraphUI() {
     var numV=document.getElementById("numV").value;
     currentGraph = new Graph(numV);
+    showGraph();
 }
 
 // UI function to insert an edge between vertices
@@ -22,6 +23,7 @@ function addEdgeUI() {
     var vertices = document.getElementById("edgeV").value.split(",");
     addEdge(vertices[0],vertices[1]);
     document.getElementById("edgeV").value="";
+    showGraph();
 }
 
 // function to add an edge between vertices v1 and v2
